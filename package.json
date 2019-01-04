@@ -2,9 +2,10 @@
   "name": "robber-app",
   "version": "1.0.0",
   "description": "Robber App using webpack + TypeScript + React",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --mode development --open --hot",
+    "build": "webpack --mode production"
   },
   "author": "vodis",
   "license": "ISC",
@@ -12,7 +13,8 @@
     "awesome-typescript-loader": "^5.2.1",
     "typescript": "^3.2.2",
     "webpack": "^4.28.3",
-    "webpack-cli": "^3.2.0"
+    "webpack-cli": "^3.2.0",
+    "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
     "@types/react": "^16.7.18",
