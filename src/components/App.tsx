@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Hello from './Hello';
 import Knapsack from './Knapsack';
-import {any} from "prop-types";
+import Market from './Market';
 
 interface AppPropsType {
 
@@ -12,18 +12,28 @@ class App extends React.Component<AppPropsType, any> {
         super(props);
         this.state = {
             isHello: true,
-            isKnapsack: false
+            isKnapsack: false,
+            isMarket: false
         };
         this.setStateHello = this.setStateHello.bind(this);
+        this.setStateKnapsack = this.setStateKnapsack.bind(this);
     }
 
-    setStateHello(value: any) {debugger;
+    setStateHello(value: any) {
         this.setState({
             isHello: value.isHello,
-            isKnapsack: true
+            isKnapsack: true,
+            isMarket: false
         });
     }
 
+    setStateKnapsack(value: any) {
+        this.setState({
+            isHello: false,
+            isKnapsack: value.isKnapsack,
+            isMarket: true
+        });
+    }
 
     render() {
         switch(true) {
@@ -39,7 +49,13 @@ class App extends React.Component<AppPropsType, any> {
 
             case !!this.state.isKnapsack:
                 return (
-                    <Knapsack />
+                    <Knapsack isKnapsackTrue={this.setStateKnapsack} />
+                );
+                break;
+
+            case !!this.state.isMarket:
+                return (
+                    <Market />
                 );
                 break;
         };

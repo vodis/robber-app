@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {any, string} from "prop-types";
 
 interface PropsType {
     children: JSX.Element,
