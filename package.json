@@ -22,6 +22,7 @@
     "@material-ui/lab": "^3.0.0-alpha.28",
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
+    "axios": "^0.18.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"

@@ -13,7 +13,8 @@ class App extends React.Component<AppPropsType, any> {
         this.state = {
             isHello: true,
             isKnapsack: false,
-            isMarket: false
+            isMarket: false,
+            sizeOfKnapsack: 0
         };
         this.setStateHello = this.setStateHello.bind(this);
         this.setStateKnapsack = this.setStateKnapsack.bind(this);
@@ -49,7 +50,9 @@ class App extends React.Component<AppPropsType, any> {
 
             case !!this.state.isKnapsack:
                 return (
-                    <Knapsack isKnapsackTrue={this.setStateKnapsack} />
+                    <Knapsack
+                        isKnapsackTrue={this.setStateKnapsack}
+                    />
                 );
                 break;
 

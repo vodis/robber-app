@@ -1,4 +1,5 @@
 import * as React from 'react';
+import MarketStore from './MarketStore';
 
 interface MarketPropsType {
 
@@ -12,7 +13,8 @@ class Market extends React.Component<MarketPropsType, {}> {
     render() {
         return (
             <div>
-                New Market
+                <div>Filter</div>
+                <MarketStore/>
             </div>
         );
     }

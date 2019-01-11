@@ -1,0 +1,100 @@
+{
+  "products": [
+    {
+      "Name": "Xiaomi Redmi Note 5 4/64GB Black (Global Rom + OTA)",
+      "Price": 4750,
+      "Size": 181,
+      "Image": "https://i1.rozetka.ua/goods/6443849/xiaomi_redmi_note5_4_64gb_black_eu_images_6443849182.jpg"
+    },
+    {
+      "Name": "Huawei P Smart 2019 3/64GB Aurora Blue (51093FTA)",
+      "Price": 6499,
+      "Size": 160,
+      "Image": "https://i2.rozetka.ua/goods/9396113/huawei_p_smart_2019_blue_images_9396113293.jpg"
+    },
+    {
+      "Name": "Samsung Galaxy A7 2017 Duos SM-A720 Gold",
+      "Price": 7299,
+      "Size": 186,
+      "Image": "https://i2.rozetka.ua/goods/1828064/samsung_sm_a720fzddsek_images_1828064749.jpg"
+    },
+    {
+      "Name": "Samsung Galaxy S9 Plus 64GB Midnight Black",
+      "Price": 27999,
+      "Size": 189,
+      "Image": "https://i1.rozetka.ua/goods/3249706/samsung_galaxy_s9_plus_64gb_black_images_3249706863.jpg"
+    },
+    {
+      "Name": "iPhone Xs 256GB Gold (MT9K2)",
+      "Price": 37260,
+      "Size": 177,
+      "Image": "https://i2.rozetka.ua/goods/8969707/58620064_images_8969707640.jpg"
+    },
+    {
+      "Name": "Apple iPhone 6s 128GB Space Gray (NV9256)",
+      "Price": 16300,
+      "Size": 192,
+      "Image": "https://i2.rozetka.ua/goods/7415718/54405354_images_7415718354.jpg"
+    },
+    {
+      "Name": "Ноутбук Acer Swift 3 SF314-54 (NX.GXZEU.046) Sparkly Silver",
+      "Price": 32999,
+      "Size": 1450,
+      "Image": "https://i1.rozetka.ua/goods/7650585/copy_acer_nx_gxzeu_040_5bab579270519_images_7650585702.jpg"
+    },
+    {
+      "Name": "Ноутбук HP 250 G6 (4LT72ES) Dark Ash",
+      "Price": 13699,
+      "Size": 1860,
+      "Image": "https://i2.rozetka.ua/goods/7794319/copy_hp_4wu93es_5bb4e09a1e325_images_7794319728.jpg"
+    },
+    {
+      "Name": "Ноутбук Apple A1466 MacBook Air 13\" (MQD32)",
+      "Price": 24669,
+      "Size": 1350,
+      "Image": "https://i1.rozetka.ua/goods/3553516/copy_apple_mqd32ua_a_5aaa639e04541_images_3553516687.jpg"
+    },
+    {
+      "Name": "Ноутбук Apple A1708 MacBook Pro Retina 13\" (MPXR2) Silver",
+      "Price": 37499,
+      "Size": 1370,
+      "Image": "https://i1.rozetka.ua/goods/3639908/35441349_images_3639908516.jpg"
+    },
+    {
+      "Name": "Apple MacBook Pro 13\" Space Gray (MR9Q2) 2018",
+      "Price": 50509,
+      "Size": 1370,
+      "Image": "https://i2.rozetka.ua/goods/6794993/copy_47880862_5b7af3252ccda_images_6794993030.jpg"
+    },
+    {
+      "Name": "Дрель ударная Bosch EasyImpact 500 (0603130003)",
+      "Price": 1749,
+      "Size": 1500,
+      "Image": "https://i1.rozetka.ua/goods/2071245/bosch_0603130003_images_2071245022.jpg"
+    },
+    {
+      "Name": "Сверлильный станок Bosch Green PBD 40 (0603B07000)",
+      "Price": 11289,
+      "Size": 11150,
+      "Image": "https://i1.rozetka.ua/goods/6572/bosch_green_pbd40_images_6572861.jpg"
+    },
+    {
+      "Name": "Пила торцовочная Metabo KS 216M lasercut (619216000)",
+      "Price": 4074,
+      "Size": 9400,
+      "Image": "https://i2.rozetka.ua/goods/347545/metabo_619216000_images_347545987.jpg"
+    },
+    {
+      "Name": "Туя западная Smaragd (пирамида) 150-170 см Земляной ком 009176",
+      "Price": 3850,
+      "Size": 100000,
+      "Image": "https://i2.rozetka.ua/goods/3928527/37329912_images_3928527632.jpg"
+    },
+    {
+      "Name": "Ель колючая Glauca Extra 100-120 см Земляной ком 009116",
+      "Price": 1950,
+      "Size": 70000,
+      "Image": "https://i2.rozetka.ua/goods/3928537/37330744_images_3928537568.jpg"
+    }
+  ]
+}

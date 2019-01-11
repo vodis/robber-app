@@ -18,7 +18,7 @@ class Knapsack extends React.Component<KnapsackPropsType, {}> {
     constructor(props: any) {
         super(props);
         this.state = {
-            isKnapsack: true
+            isKnapsack: true,
         };
         this.handleClick = this.handleClick.bind(this);
         this.checkIsKnapsackTrue = this.checkIsKnapsackTrue.bind(this);

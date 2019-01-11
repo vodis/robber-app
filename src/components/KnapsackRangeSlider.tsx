@@ -15,7 +15,11 @@ const styles = {
 
 type ClassNames = { classes: { [className in keyof typeof styles]: string } };
 
-class KnapsackRangeSlider extends React.Component<ClassNames> {
+interface KnapsackRangeSliderPropsType {
+
+}
+
+class KnapsackRangeSlider extends React.Component<ClassNames, KnapsackRangeSliderPropsType> {
     state = {
         value: 50,
     };
@@ -30,7 +34,7 @@ class KnapsackRangeSlider extends React.Component<ClassNames> {
 
         return (
             <div className={classes.root}>
-        <Typography id="label">Slider label</Typography>
+        <Typography id="label">{Math.round(this.state.value)}</Typography>
         <Slider
         classes={{ container: classes.slider }}
         value={value}
