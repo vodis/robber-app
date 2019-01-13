@@ -1,8 +1,12 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
+
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/lab/Slider';
+
+import { connect } from "react-redux";
+import { newKnapsackSize } from "../actions/knapsackActions";
 
 const styles = {
     root: {
@@ -13,41 +17,74 @@ const styles = {
     },
 };
 
-type ClassNames = { classes: { [className in keyof typeof styles]: string } };
+type ClassNames = {
+    classes: {
+        [className in keyof typeof styles]: string
+    },
+    newKnapsackSize: any,
+    fetchSize: any,
+    size: any
+}
 
 interface KnapsackRangeSliderPropsType {
+    value: any
 
 }
 
 class KnapsackRangeSlider extends React.Component<ClassNames, KnapsackRangeSliderPropsType> {
-    state = {
-        value: 50,
-    };
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            value: this.props.size
+        };
+    }
+
+    componentWillMount() {
+        this.props.newKnapsackSize();
+    }
+
+    componentWillReceiveProps(nextProps: any) {
+        if (nextProps.size) {
+            this.setState({
+                value: this.props.size,
+            });
+        }
+    }
 
     handleChange = (event: any, value: any) => {
-        this.setState({ value });
+        let count = Math.round(value);
+        this.setState({
+            value: count
+        });
+        this.props.newKnapsackSize(count);
     };
 
     render() {
         const { classes } = this.props;
-        const { value } = this.state;
+        const value = this.state.value;
 
         return (
             <div className={classes.root}>
-        <Typography id="label">{Math.round(this.state.value)}</Typography>
-        <Slider
-        classes={{ container: classes.slider }}
-        value={value}
-        aria-labelledby="label"
-        onChange={this.handleChange}
-        />
-        </div>
-    );
-    }
+                <Typography id="label">{value}</Typography>
+                <Slider
+                    classes={{ container: classes.slider }}
+                    value={value}
+                    aria-labelledby="label"
+                    onChange={this.handleChange}
+                />
+            </div>
+        );
+    };
 }
 
-// SliderRangeSlider.propTypes = {
-//     classes: PropTypes.object.isRequired,
-// };
+KnapsackRangeSlider.propTypes = {
+    classes: PropTypes.object.isRequired,
+    fetchSize: PropTypes.number.isRequired,
+    newKnapsackSize: PropTypes.func.isRequired,
+};
 
-export default withStyles(styles)(KnapsackRangeSlider);
+const mapStateToProps = (state: any) => ({
+    size: state.fetchSize.currentSize,
+});
+
+export default connect(mapStateToProps, { newKnapsackSize })(withStyles(styles)(KnapsackRangeSlider));

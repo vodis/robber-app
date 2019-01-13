@@ -1,0 +1,1 @@
+export const NEW_KNAPSACK_SIZE = 'NEW_KNAPSACK_SIZE';
