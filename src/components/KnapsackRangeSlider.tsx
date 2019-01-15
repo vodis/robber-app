@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -22,7 +22,7 @@ type ClassNames = {
         [className in keyof typeof styles]: string
     },
     newKnapsackSize: any,
-    fetchSize: any,
+    fetchSize: number,
     size: any
 }
 
@@ -31,11 +31,11 @@ interface KnapsackRangeSliderPropsType {
 
 }
 
-class KnapsackRangeSlider extends React.Component<ClassNames, KnapsackRangeSliderPropsType> {
+class KnapsackRangeSlider extends React.Component<ClassNames, KnapsackRangeSliderPropsType, {}> {
     constructor(props: any) {
         super(props);
         this.state = {
-            value: this.props.size
+            value: this.props.size,
         };
     }
 
@@ -77,11 +77,11 @@ class KnapsackRangeSlider extends React.Component<ClassNames, KnapsackRangeSlide
     };
 }
 
-KnapsackRangeSlider.propTypes = {
-    classes: PropTypes.object.isRequired,
-    fetchSize: PropTypes.number.isRequired,
-    newKnapsackSize: PropTypes.func.isRequired,
-};
+// KnapsackRangeSlider.propTypes = {
+//     classes: PropTypes.object.isRequired,
+//     fetchSize: PropTypes.number.isRequired,
+//     newKnapsackSize: PropTypes.func.isRequired,
+// };
 
 const mapStateToProps = (state: any) => ({
     size: state.fetchSize.currentSize,

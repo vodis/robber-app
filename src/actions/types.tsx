@@ -1,1 +1,2 @@
 export const NEW_KNAPSACK_SIZE = 'NEW_KNAPSACK_SIZE';
+export const FILTERED = 'FILTERED';

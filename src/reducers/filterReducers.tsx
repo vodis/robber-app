@@ -1,16 +1,16 @@
-import { NEW_KNAPSACK_SIZE } from "../actions/types";
+import { FILTERED } from "../actions/types";
 
 const initialState = {
-    currentSize: 50,
+    search: '',
 };
 
 export default function (state = initialState, action: any) {
+    console.log("ReducingSearch_state", state, "ReducingSearch_action", action);
     switch (action.type) {
-        case NEW_KNAPSACK_SIZE:
-            console.log("Reducing", state, action);
+        case FILTERED:
             return {
                 ...state,
-                currentSize: action.payload
+                search: action.payload
             };
         default:
             return state;
