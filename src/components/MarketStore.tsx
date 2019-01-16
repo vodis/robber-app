@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import KnapsackRangeSlider from './KnapsackRangeSlider';
 import Filter from './Filter';
+import AddNewProduct from './AddNewProduct';
 import { filtered } from "../actions/filterActions";
 import {connect} from "react-redux";
 
@@ -46,6 +47,8 @@ class MarketStore extends React.Component<MarketStorePropsType, MarketStoreState
         return (
             <div>
                 <KnapsackRangeSlider />
+                <AddNewProduct />
+                <br />
                 <Filter />
                 { products }
             </div>
