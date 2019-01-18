@@ -13,6 +13,7 @@ interface MarketStorePropsType {
     filtered: any,
     products: any,
     fetchProducts: any,
+    createProduct: any,
 }
 
 class MarketStore extends React.Component<MarketStorePropsType, MarketStoreState> {
@@ -23,6 +24,10 @@ class MarketStore extends React.Component<MarketStorePropsType, MarketStoreState
     componentWillReceiveProps(nextProps: any) {
         if (!!Object.keys(nextProps.newProduct).length) {
             this.props.products.unshift(nextProps.newProduct);
+
+            let product = {};
+
+            this.props.createProduct({});
         }
     }
 

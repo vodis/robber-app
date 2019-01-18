@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createProduct } from '../actions/marketStoreActions';
 import { connect } from 'react-redux';
+import {any} from "prop-types";
 
 type AddNewProductType = {
     isOpen: boolean,
@@ -8,19 +9,19 @@ type AddNewProductType = {
 }
 
 interface AddNewProductPropsType {
-    createProduct: any
+    createProduct: any,
 }
 
-class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProductType> {
+class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProductType, {}> {
     constructor(props: any) {
         super(props);
         this.state = {
             isOpen: false,
             product: {
                 Name: "",
-                Price: 0,
-                Size: 0,
-                Image: ""
+                Price: "",
+                Size: "",
+                Image: "",
             }
         };
         this.openForm = this.openForm.bind(this);
@@ -45,15 +46,19 @@ class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProduc
 
     confirmForm(e: any) {
         e.preventDefault();
-
-        const product = {
-            Name: this.state.product["Name"],
-            Price: this.state.product["Price"],
-            Size: this.state.product["Size"],
-            Image: this.state.product["Image"]
-        };
-
-        this.props.createProduct(product);
+        this.props.createProduct(this.state.product);
+        this.setState({
+            product: {
+                Name: "",
+                Price: "",
+                Size: "",
+                Image: "",
+            }
+        });
+        this.refs.name.value = "";
+        this.refs.price.value = "";
+        this.refs.size.value = "";
+        this.refs.image.value = "";
     }
 
     render() {
@@ -64,24 +69,28 @@ class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProduc
                        name="Name"
                        onChange={this.onChange}
                        placeholder="Name"
+                       ref="name"
                 />
                 <label>Price</label>
                 <input type="text"
                        name="Price"
                        onChange={this.onChange}
                        placeholder="Price"
+                       ref="price"
                 />
                 <label>Size</label>
                 <input type="text"
                        name="Size"
                        onChange={this.onChange}
                        placeholder="Size"
+                       ref="size"
                 />
                 <label>Image</label>
                 <input type="text"
                        name="Image"
                        onChange={this.onChange}
                        placeholder="https://"
+                       ref="image"
                 />
                 <button type="submit">Add</button>
             </form>
