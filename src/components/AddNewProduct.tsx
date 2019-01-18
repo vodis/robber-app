@@ -1,7 +1,6 @@
 import * as React from 'react';
-import axios from "axios";
-
-
+import { createProduct } from '../actions/marketStoreActions';
+import { connect } from 'react-redux';
 
 type AddNewProductType = {
     isOpen: boolean,
@@ -9,7 +8,7 @@ type AddNewProductType = {
 }
 
 interface AddNewProductPropsType {
-
+    createProduct: any
 }
 
 class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProductType> {
@@ -29,7 +28,7 @@ class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProduc
         this.confirmForm = this.confirmForm.bind(this);
     }
 
-    openForm(e: any) {
+    openForm() {
         this.setState({
             isOpen: !this.state.isOpen
         });
@@ -38,7 +37,7 @@ class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProduc
     onChange(e: any) {
         let item = this.state.product;
         for (let key in item) {
-            if (key == [e.target.name]) {
+            if (key == e.target.name) {
                 return item[key] = e.target.value
             }
         }
@@ -47,7 +46,14 @@ class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProduc
     confirmForm(e: any) {
         e.preventDefault();
 
-        console.log(this.state.product);
+        const product = {
+            Name: this.state.product["Name"],
+            Price: this.state.product["Price"],
+            Size: this.state.product["Size"],
+            Image: this.state.product["Image"]
+        };
+
+        this.props.createProduct(product);
     }
 
     render() {
@@ -72,10 +78,10 @@ class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProduc
                        placeholder="Size"
                 />
                 <label>Image</label>
-                <input type="file"
+                <input type="text"
                        name="Image"
                        onChange={this.onChange}
-                       placeholder="Image"
+                       placeholder="https://"
                 />
                 <button type="submit">Add</button>
             </form>
@@ -90,4 +96,4 @@ class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProduc
     }
 }
 
-export default AddNewProduct;
+export default connect(null, { createProduct })(AddNewProduct);

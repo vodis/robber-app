@@ -30,5 +30,6 @@
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
-  }
+  },
+  "proxy": "http://localhost:6464/"
 }
