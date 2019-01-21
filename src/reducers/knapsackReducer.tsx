@@ -7,7 +7,6 @@ const initialState = {
 export default function (state = initialState, action: any) {
     switch (action.type) {
         case NEW_KNAPSACK_SIZE:
-            console.log("Reducing", state, action);
             return {
                 ...state,
                 currentSize: action.payload

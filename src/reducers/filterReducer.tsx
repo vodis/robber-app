@@ -5,7 +5,6 @@ const initialState = {
 };
 
 export default function (state = initialState, action: any) {
-    console.log("ReducingSearch_state", state, "ReducingSearch_action", action);
     switch (action.type) {
         case FILTERED:
             return {

@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { fetchProducts } from '../actions/marketStoreActions';
-import { createProduct } from '../actions/marketStoreActions';
+import { fetchProducts, createProduct } from '../actions/marketStoreActions';
 import { filtered } from '../actions/filterActions';
+import { newStore } from '../actions/storeActions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 type MarketStoreState = {
+
 }
 
 interface MarketStorePropsType {
@@ -14,9 +15,17 @@ interface MarketStorePropsType {
     products: any,
     fetchProducts: any,
     createProduct: any,
+    newStore: any,
 }
 
 class MarketStore extends React.Component<MarketStorePropsType, MarketStoreState> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            newProduct: []
+        };
+    }
+
     componentWillMount() {
         this.props.fetchProducts();
     }
@@ -24,11 +33,12 @@ class MarketStore extends React.Component<MarketStorePropsType, MarketStoreState
     componentWillReceiveProps(nextProps: any) {
         if (!!Object.keys(nextProps.newProduct).length) {
             this.props.products.unshift(nextProps.newProduct);
-
-            let product = {};
-
             this.props.createProduct({});
         }
+    }
+
+    handleAddProductToStore(this: any, product: any, ) {
+        this.props.newStore(product);
     }
 
     render() {
@@ -39,7 +49,10 @@ class MarketStore extends React.Component<MarketStorePropsType, MarketStoreState
         ) : this.props.products;
 
         const productItems = searchItem.map((product: any, index: number) => (
-            <p key={index}>{product.Name}</p>
+            <div key={index}>
+                <p>{product.Name}</p>
+                <button type="submit" onClick={this.handleAddProductToStore.bind(this, product)}>Add to market</button>
+            </div>
         ));
 
         return (
@@ -54,6 +67,7 @@ const mapStateToProps = (state: any) => ({
     products: state.getProducts.items,
     newProduct: state.getProducts.item,
     filter: state.fetchFilter.search,
+    store: state.fetchStore.store,
 });
 
-export default connect(mapStateToProps, { fetchProducts, createProduct, filtered })(MarketStore);
+export default connect(mapStateToProps, { fetchProducts, createProduct, filtered, newStore })(MarketStore);
