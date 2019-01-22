@@ -10,7 +10,7 @@ import { newKnapsackSize } from "../actions/knapsackActions";
 
 const styles = {
     root: {
-        width: 300,
+        width: '100%',
     },
     slider: {
         padding: '22px 0px',
@@ -40,7 +40,7 @@ class KnapsackRangeSlider extends React.Component<ClassNames, KnapsackRangeSlide
     }
 
     componentWillMount() {
-        this.props.newKnapsackSize();
+        this.props.newKnapsackSize(50);
     }
 
     componentWillReceiveProps(nextProps: any) {
@@ -65,7 +65,6 @@ class KnapsackRangeSlider extends React.Component<ClassNames, KnapsackRangeSlide
 
         return (
             <div className={classes.root}>
-                <Typography id="label">{value}</Typography>
                 <Slider
                     classes={{ container: classes.slider }}
                     value={value}
