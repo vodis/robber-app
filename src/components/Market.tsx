@@ -7,8 +7,9 @@ import Store from './Store';
 import { connect } from "react-redux";
 import { newKnapsackSize } from "../actions/knapsackActions";
 
-import './Market.scss';
+
 import Grid from '@material-ui/core/Grid';
+import GridList from '@material-ui/core/GridList';
 
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -18,15 +19,25 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
+import Paper from '@material-ui/core/Paper';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 
+
+import './Market.scss';
 
 
 import {connect} from "react-redux";
 import {newKnapsackSize} from "../actions/knapsackActions";
 
-const styles = theme => ({
+const styles = (theme: any) => ({
     root: {
         flexGrow: 1,
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        overflow: 'hidden',
+        backgroundColor: theme.palette.background.paper,
     },
     grow: {
         flexGrow: 1,
@@ -79,10 +90,13 @@ class Market extends React.Component<MarketPropsType, {}> {
             <div className={classes.root}>
                 <AppBar position="static" color="default">
                     <Toolbar>
-                        <Grid item xs={2} >
+                        <Grid item xs={4} >
+                            <AddNewProduct />
+                        </Grid>
+                        <Grid item xs={4} >
                             <KnapsackRangeSlider />
                         </Grid>
-                        <Grid item xs={10} dir="rtl">
+                        <Grid item xs={4} dir="rtl">
                             <IconButton aria-label="Cart">
                                 <Badge badgeContent={this.state.value} color="primary" classes={{ badge: classes.badge }}>
                                     <Avatar src="https://cdn4.iconfinder.com/data/icons/school-backpack-satchel/128/7-512.png" className={classes.avatar} />
@@ -91,18 +105,16 @@ class Market extends React.Component<MarketPropsType, {}> {
                         </Grid>
                     </Toolbar>
                 </AppBar>
-                <Grid item xs={4}>
-
-                    <AddNewProduct />
-                    <hr />
-                    <Filter />
-                    <MarketStore/>
-                </Grid>
-                <Grid item xs={4}>
-                    <Store />
-                </Grid>
-                <Grid item xs={4}>
-                    <div>Card</div>
+                <Grid container>
+                    <Grid className="leftBar" item xs={4}>
+                        <Paper square className={classes.paper}>
+                            <Filter />
+                            <MarketStore/>
+                        </Paper>
+                    </Grid>
+                    <Grid item xs={8}>
+                        <Store />
+                    </Grid>
                 </Grid>
             </div>
         );

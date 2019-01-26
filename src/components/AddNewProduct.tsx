@@ -3,9 +3,51 @@ import { createProduct } from '../actions/marketStoreActions';
 import { connect } from 'react-redux';
 import {any} from "prop-types";
 
+import { withStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import Button from '@material-ui/core/Button';
+import "./App.scss";
+
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+
+const styles = (theme: any) => ({
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+    },
+    dense: {
+        marginTop: 16,
+    },
+    menu: {
+        width: 300,
+    },
+    fab: {
+        margin: theme.spacing.unit,
+    },
+    extendedIcon: {
+        marginRight: theme.spacing.unit,
+    },
+    bt: {
+        display: 'grid',
+        margin: '30px 7px',
+    },
+});
+
 type AddNewProductType = {
+    classes: {
+        [className in keyof typeof styles]: string
+    },
     isOpen: boolean,
     product: object,
+    left: boolean,
 }
 
 interface AddNewProductPropsType {
@@ -22,7 +64,8 @@ class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProduc
                 Price: "",
                 Size: "",
                 Image: "",
-            }
+            },
+            left: false,
         };
         this.openForm = this.openForm.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -46,7 +89,9 @@ class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProduc
 
     confirmForm(e: any) {
         e.preventDefault();
-        this.props.createProduct(this.state.product);
+        if (this.state.product.Name.length > 3 && this.state.product.Price.length > 0 && this.state.product.Size.length > 0) {
+            this.props.createProduct(this.state.product);
+        }
         this.setState({
             product: {
                 Name: "",
@@ -62,47 +107,80 @@ class AddNewProduct extends React.Component<AddNewProductPropsType, AddNewProduc
     }
 
     render() {
+        const toggleDrawer = (side: string, open: boolean) => () => {
+            this.setState({ ...this.state, [side]: open });
+        };
+        const { classes } = this.props;
+
         const Constructor = (
-            <form onSubmit={this.confirmForm}>
-                <label>Name</label>
-                <input type="text"
-                       name="Name"
-                       onChange={this.onChange}
-                       placeholder="Name"
-                       ref="name"
-                />
-                <label>Price</label>
-                <input type="text"
-                       name="Price"
-                       onChange={this.onChange}
-                       placeholder="Price"
-                       ref="price"
-                />
-                <label>Size</label>
-                <input type="text"
-                       name="Size"
-                       onChange={this.onChange}
-                       placeholder="Size"
-                       ref="size"
-                />
-                <label>Image</label>
-                <input type="text"
-                       name="Image"
-                       onChange={this.onChange}
-                       placeholder="https://"
-                       ref="image"
-                />
-                <button type="submit">Add</button>
-            </form>
+            <div className="drawersList">
+                <form onSubmit={this.confirmForm}>
+                    <TextField
+                        id="outlined-name"
+                        label="Name"
+                        className={classes.textField}
+                        type="text"
+                        name="Name"
+                        onChange={this.onChange}
+                        placeholder="Name"
+                        ref="name"
+                    />
+                    <TextField
+                        id="outlined-number"
+                        className={classes.textField}
+                        type="Number"
+                        name="Price"
+                        onChange={this.onChange}
+                        placeholder="Price"
+                        ref="price"
+                    />
+                    <TextField
+                        id="outlined-number"
+                        className={classes.textField}
+                        type="Number"
+                        name="Size"
+                        onChange={this.onChange}
+                        placeholder="Size"
+                        ref="size"
+                    />
+                    <TextField
+                        id="outlined-name"
+                        label="Image"
+                        className={classes.textField}
+                        type="text"
+                        name="Image"
+                        onChange={this.onChange}
+                        placeholder="https://"
+                        ref="image"
+                    />
+                    <div className={classes.bt}>
+                        <Button variant="contained" color="primary" type="submit" onClick={toggleDrawer('left', false)}>Add</Button>
+                    </div>
+                </form>
+            </div>
         );
+
+        const { classes } = this.props;
 
         return (
             <div>
-                <button onClick={this.openForm}>{ !this.state.isOpen ? 'Add new product' : 'Close the form'}</button>
-                { !!this.state.isOpen ? Constructor : "" }
+                <Fab
+                    onClick={toggleDrawer('left', true)}
+                    color="primary"
+                    size="small"
+                    aria-label="Add"
+                    className={classes.fab}
+                >
+                    <AddIcon />
+                </Fab>
+                <Drawer open={this.state.left} onClose={toggleDrawer('left', false)}>
+                    <div tabIndex={0} role="button">
+                        { Constructor }
+                    </div>
+                </Drawer>
             </div>
         );
     }
 }
 
-export default connect(null, { createProduct })(AddNewProduct);
+export default connect(null, { createProduct })(withStyles(styles)(AddNewProduct));
